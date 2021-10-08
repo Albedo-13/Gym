@@ -16,20 +16,70 @@ namespace Gym.Controllers
             return View();
         }
 
-        public ActionResult Slaves()
+        public ActionResult Slaves(string SearchRequest)
         {
-            var dbInfo = db.Slaves
+            IQueryable<Slave> filteredItems = db.Slaves
                 .Include(v => v.Master);
 
-            return View(dbInfo);
+            if (SearchRequest != null && SearchRequest != "" && SearchRequest.Length > 1)
+            {
+                filteredItems = filteredItems
+                .Where(v => v.Name.ToLower().Contains(SearchRequest.ToLower())
+                || v.Surname.ToString().Contains(SearchRequest.ToLower()));
+            }
+
+            return View(filteredItems);
         }
 
-        public ActionResult Masters()
+        public ActionResult Masters(string SearchRequest)
         {
-            var dbInfo = db.GymMasters
+            IQueryable<GymMaster> filteredItems = db.GymMasters
                 .Include(v => v.Slaves);
 
-            return View(dbInfo);
+            if (SearchRequest != null && SearchRequest != "" && SearchRequest.Length > 1)
+            {
+                filteredItems = filteredItems
+                .Where(v => v.Name.ToLower().Contains(SearchRequest.ToLower())
+                || v.Surname.ToString().Contains(SearchRequest.ToLower()));
+            }
+
+            return View(filteredItems);
+        }
+
+        [HttpGet]
+        public ActionResult AddSlave()
+        {
+            ViewBag.MasterList = new SelectList(db.GymMasters, "Id", "Surname");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddSlave(Slave newSlave)
+        {
+            GymMaster masterOfTheSlave = db.GymMasters.Find(newSlave.MasterId);
+            newSlave.Master = masterOfTheSlave;
+
+            db.Slaves.Add(newSlave);
+            db.Entry(newSlave).State = EntityState.Added;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult AddMaster()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddMaster(GymMaster newMaster)
+        {
+            db.GymMasters.Add(newMaster);
+            db.Entry(newMaster).State = EntityState.Added;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

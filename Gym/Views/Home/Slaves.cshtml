@@ -6,6 +6,15 @@
 
 <h2>Список посетителей</h2>
 
+<div class="custom-searchbar-container">
+    @using (Html.BeginForm("Slaves", "Home", FormMethod.Post))
+    {
+        @Html.TextBox("SearchRequest", null, new { placeholder = "поиск по имени/фамилии", @class = "form__field" })
+        <input type="submit" class="btn btn--primary btn--inside uppercase" value="Найти" />
+    }
+</div>
+<br>
+
 <table class="table">
     <tr>
         <th>

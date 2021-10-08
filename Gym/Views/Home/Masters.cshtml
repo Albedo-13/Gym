@@ -6,6 +6,15 @@
 
 <h2>Тренеры</h2>
 
+<div class="custom-searchbar-container">
+    @using (Html.BeginForm("Masters", "Home", FormMethod.Post))
+    {
+        @Html.TextBox("SearchRequest", null, new { placeholder = "поиск по имени/фамилии", @class = "form__field" })
+        <input type="submit" class="btn btn--primary btn--inside uppercase" value="Найти" />
+    }
+</div>
+<br>
+
 <table class="table">
     <tr>
         <th>
@@ -22,26 +31,27 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @foreach (var visitor in item.Slaves)
-            {
-                <p>@visitor.Name @visitor.Surname </p> <br/>
-            }
-        </td>
-    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @foreach (var visitor in item.Slaves)
+                {
+                    <p>@visitor.Name @visitor.Surname </p> <br />
+                }
+            </td>
+        </tr>
 
 
-}
+    }
 
 </table>
