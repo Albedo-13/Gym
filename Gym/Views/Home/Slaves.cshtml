@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Gym.Models.Slave>
+
+@{
+    ViewBag.Title = "Slaves";
+}
+
+<h2>Список посетителей</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Имя")
+        </th>
+        <th>
+            @Html.DisplayName("Фамилия")
+        </th>
+        <th>
+            @Html.DisplayName("Телефонный номер")
+        </th>
+        <th>
+            @Html.DisplayName("Тренер")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Surname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhoneNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Master.Name)
+        @Html.DisplayFor(modelItem => item.Master.Surname)
+    </td>
+</tr>
+}
+
+</table>
