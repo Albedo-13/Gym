@@ -81,5 +81,15 @@ namespace Gym.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult RemoveSlave(int? Id)
+        {
+            Slave s = db.Slaves.Find(Id);
+            db.Slaves.Remove(s);
+            db.Entry(s).State = EntityState.Deleted;
+            db.SaveChanges();
+
+            return RedirectToAction("Slaves");
+        }
     }
 }
