@@ -46,6 +46,9 @@
         @Html.DisplayFor(modelItem => item.Master.Name)
         @Html.DisplayFor(modelItem => item.Master.Surname)
     </td>
+    <td>
+        @Html.ActionLink("X", "RemoveSlave", "Home", new { Id = item.Id }, new { @class = "btn-danger" })
+    </td>
 </tr>
 }
 

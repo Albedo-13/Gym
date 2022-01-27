@@ -265,6 +265,5 @@ C:\Users\Trust\Desktop\VSProjects\OPI\Gym\Gym\bin\ru\System.Web.WebPages.Deploym
 C:\Users\Trust\Desktop\VSProjects\OPI\Gym\Gym\bin\ru\System.Web.WebPages.Razor.resources.dll
 C:\Users\Trust\Desktop\VSProjects\OPI\Gym\Gym\obj\Debug\Gym.csproj.AssemblyReference.cache
 C:\Users\Trust\Desktop\VSProjects\OPI\Gym\Gym\obj\Debug\Gym.csproj.CoreCompileInputs.cache
-C:\Users\Trust\Desktop\VSProjects\OPI\Gym\Gym\obj\Debug\Gym.csproj.CopyComplete
 C:\Users\Trust\Desktop\VSProjects\OPI\Gym\Gym\obj\Debug\Gym.dll
 C:\Users\Trust\Desktop\VSProjects\OPI\Gym\Gym\obj\Debug\Gym.pdb
